@@ -1,0 +1,214 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<package name="javaeetest_manager" extends="struts-default,jfreechart-default">
+		
+		<interceptors>
+			<interceptor name="authority" class="com.javaeetest.interceptor.ManagerLoginCheck"/>
+		</interceptors>
+		
+	
+		<global-results>
+			<result name="login" type="chain">manager_LoginForm</result>
+		</global-results>
+		
+		<action name="manager_LoginForm">
+			<result>/manage/manageLogin.jsp</result>
+		</action>
+		
+		<!--管理员登录  -->
+		<action name="manager_Login" class="ManagerAction">
+			<result name="success" type="redirect">/manage/manageWelcome.jsp</result>
+			<result name="error">/manage/managerIsLogin.jsp</result>
+			<result name="input">/manage/manageLogin.jsp</result>
+		</action>
+		
+		<action name="manager_addBookForm" class="BookAction" method="getAllBookType">
+			<result name="success">/manage/addBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<!--添加新书  -->
+		<action name="manager_addBook" class="BookAction" method="addBook">
+			<param name="savePath">/upload</param>
+			<result name="success">/manage/addBookSuccess.jsp</result>
+			<result name="input">/manage/addBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_allBookType" class="BookTypeAction">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_validateTypeName" class="BookTypeAction" 
+			method="validateTypeName">
+			<result type="stream" name="ajax_succ">
+				<param name="contentType">text/html</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<!--添加图书类别  -->
+		<action name="manager_addBookType" class="BookTypeAction" method="addBookType">
+			<result type="stream" name="ajax_succ">
+				<param name="contentType">text/html</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_userList" class="UserAction">
+			<result name="success">/manage/userInfo.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_bookList" class="BookAction" method="showBookList">
+			<result name="success">/manage/bookList.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_singleBook" class="BookAction" method="singleBook">
+			<result name="success">/manage/singleBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_showUpdateBook" class="BookAction" method="singleBook">
+			<result name="success">/manage/updateBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_updateBook" class="BookAction" method="updateBook">
+			<result type="stream" name="ajax_succ">
+				<param name="contentType">text/html</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_offshelvesBook" class="BookAction" method="offselvesBook">
+			<result type="stream" name="ajax_succ">
+				<param name="contentType">text/html</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_removeBargainBook" class="BargainAction">
+			<result name="success">/manage/removeBargainBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_addBargainShow" class="BargainAction">
+			<result name="success">/manage/addBargainBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		
+		<action name="manager_noBargain" class="BargainAction" method="noBargain">
+			<result type="stream" name="ajax_succ">
+				<param name="contentType">text/html</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_addBargain" class="BargainAction" method="addBargain">
+			<result type="stream" name="ajax_succ">
+				<param name="contentType">text/html</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_show*" class="OrdersAction" method="show{1}">
+			<result name="success">/manage/manageAllOrders.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_handleOrder" class="OrdersAction" method="handleOrder">
+			<result type="stream" name="ajax_succ">
+				<param name="contentType">text/html</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_singleOrder" class="OrdersBookAction">
+			<result name="success">/manage/singleOrders.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		<action name="singleOrdersAction" class="OrdersBookAction"
+			method="execute">
+		</action>
+		<action name="manager_managerExit" class="ManagerAction" method="managerExit">
+			<result name="success" type="redirect">/manage/manageLogin.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="singleUser" class="UserAction" method="singleUser">
+			<result name="success">/manage/singleUser.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_searchForBook" class="BookAction" method="showBookForSearch">
+			<result name="success">/manage/bookList.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_searchForBookInBargain" class="BookAction" method="getBookBySearchCriteriaInBargain">
+			<result name="success">/manage/addBargainBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_bookStatisticsForDate" class="BookAction" >
+			<result type="chart">
+				<!-- 定义JFreeChart 报表的大小 -->
+				<param name="width">500</param>
+				<param name="height">375</param>
+				<param name="align">center</param> 
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_showBookStatisticsForDate">
+			<result>/manage/bookStatisticsForDate.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		<action name="manager_showBooksaleDate">
+			<result>/manage/showbooksaledata.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+	</package>
+	
+</struts>
+
+

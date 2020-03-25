@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="candy" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<property name="url"
+			value="jdbc:sqlserver://localhost:1433; DatabaseName=BookStore">
+		</property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="sa"></property>
+		
+		
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="candy" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.jdbc.use_scrollable_resultset">false</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/javaeetest/entity/Address.hbm.xml</value>
+				<value>com/javaeetest/entity/Manager.hbm.xml</value>
+				<value>com/javaeetest/entity/BookType.hbm.xml</value>
+				<value>com/javaeetest/entity/Book.hbm.xml</value>
+				<value>com/javaeetest/entity/Bargain.hbm.xml</value>
+				<value>com/javaeetest/entity/User.hbm.xml</value>
+				<value>com/javaeetest/entity/Orders.hbm.xml</value>
+				<value>com/javaeetest/entity/OrdersBook.hbm.xml</value>
+				
+			</list>
+		</property>
+	</bean>
+	
+	
+	<!-- Manager类有关的配置 -->
+	
+	<bean id="managerDao" class="com.javaeetest.dao.impl.ManagerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="managerService" class="com.javaeetest.service.impl.ManagerServiceImpl"
+		p:managerDao-ref="managerDao" />
+		
+	<bean id="ManagerAction" class="com.javaeetest.action.ManagerAction" scope="prototype">
+		<property name="managerService" ref="managerService"></property>
+	</bean>
+	
+	<!-- Book类有关的配置 -->
+	
+	<bean id="bookDao" class="com.javaeetest.dao.impl.BookDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		
+	<bean id="bookService" class="com.javaeetest.service.impl.BookServiceImpl"
+		p:bookDao-ref="bookDao" />
+		
+	<bean id="BookAction" class="com.javaeetest.action.BookAction">
+		<property name="bookService" ref="bookService"></property>
+		<property name="bookTypeService" ref="bookTypeService"></property>
+	</bean>
+		
+		
+	<!--BookType有关类的配置  -->
+	
+	<bean id="bookTypeDao" class="com.javaeetest.dao.impl.BookTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="bookTypeService" class="com.javaeetest.service.impl.BookTypeServiceImpl">
+		<property name="bookTypeDao" ref="bookTypeDao"></property>
+	</bean>
+	
+	<bean id="BookTypeAction" class="com.javaeetest.action.BookTypeAction">
+		<property name="bookTypeService" ref="bookTypeService"></property>
+	</bean>
+	
+	
+	<!-- 与User有关的配置 -->
+	<bean id="userDao" class="com.javaeetest.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="userService" class="com.javaeetest.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<bean id="UserAction" class="com.javaeetest.action.UserAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	 <bean id="addressDao" class="com.javaeetest.dao.impl.AddressDaoImpl">
+     <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	
+	<!-- 与Bargain有关的配置 -->
+	<bean id="bargainDao" class="com.javaeetest.dao.impl.BargainDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="bargainService" class="com.javaeetest.service.impl.BargainServiceImpl">
+		<property name="bargainDao" ref="bargainDao"></property>
+		<property name="bookDao" ref="bookDao"></property>
+	</bean>
+	
+	<bean id="BargainAction" class="com.javaeetest.action.BargainAction">
+		<property name="bargainService" ref="bargainService"></property>
+		<property name="bookService" ref="bookService"></property>
+	</bean>
+	
+	
+	<!-- 与orders有关的配置 -->
+	<bean id="ordersDao" class="com.javaeetest.dao.impl.OrdersDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="ordersService" class="com.javaeetest.service.impl.OrdersServiceImpl">
+		<property name="ordersDao" ref="ordersDao"></property>
+		<property name="ordersBookDao" ref="ordersBookDao"></property>
+		<property name="bookDao" ref="bookDao"></property>
+	</bean>
+	
+	<bean id="OrdersAction" class="com.javaeetest.action.OrdersAction">
+		<property name="ordersService" ref="ordersService"></property>
+	</bean>
+	<bean id="addressService" class="com.javaeetest.service.impl.AddressServiceImpl" 
+    p:addressDao-ref="addressDao"/>
+	
+	<!-- OrdersBook有关的配置 -->
+	<bean id="ordersBookDao" class="com.javaeetest.dao.impl.OrdersBookDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="ordersBookService" class="com.javaeetest.service.impl.OrdersBookServiceImpl">
+		<property name="ordersBookDao" ref="ordersBookDao"></property>
+	</bean>
+	
+	<bean id="OrdersBookAction" class="com.javaeetest.action.OrdersBookAction">
+		<property name="ordersBookService" ref="ordersBookService"></property>
+		<property name="bargainService" ref="bargainService"></property>
+		<property name="addressService" ref="addressService"></property>
+		<property name="ordersService" ref="ordersService"></property>
+	</bean>
+</beans>

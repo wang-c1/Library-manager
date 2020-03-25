@@ -1,0 +1,172 @@
+/*����Ϊȫ������*/
+*{ font-size: 12px; margin: 0px; padding:0px; }
+img{ border: 0px;}
+li{ list-style: none; }
+
+/*����Ϊָ������*/
+#top,#bottom,#login,#addBook,#welcome,#managePage{
+	width: 100%;
+	heigth:100%
+	
+}
+#logo{
+	float: left;
+	margin-top: 30px;
+	width: 200px;
+}
+#logoLink{
+	float: left;
+	width: 650px;
+	margin-top: 20px;
+	text-align: right;
+}
+#welcome{
+	text-align: right;
+	padding-right: 50px;
+}
+#login{
+	height: 420px;
+	padding-top: 100px;
+}
+#manageLeft{
+	float: left;
+	width: 180px;
+	background-color: white;
+}
+ul.manageLeft,li.manageLeftHead{
+	width: 180px;
+}
+ul.manageLeft{
+	height: 400px;
+}
+ul.manageLeft a:VISITED,ul.manageLeft a:LINK{
+	text-decoration: none;
+	color:white;
+}
+ul.manageLeft a:ACTIVE,ul.manageLeft a:HOVER{
+	text-decoration: underline;
+	color:black;
+}
+li.manageLeftHead{
+	padding: 20px;
+	font-weight: bold;
+}
+#addBook,#manageWelcome{
+	padding-top: 50px;
+}
+#manageAllOrders,#addBook,#manageWelcome,#singleOrders,#oneType{
+	float: left;
+	width: 80%;
+	height: 440px;
+	background-color: white;
+}
+
+#manageBook{
+	float:left;
+	width: 80%;
+	height: 440px;
+	background-color: white;
+}
+
+ul.singleOrders,ul.singleOrdersBook,ul.singleOrdersFoot{
+	width: 702px;
+	margin-left: 8px;
+	
+}
+ul.singleOrdersBook{
+	margin-left: 18px;
+}
+ul.singleOrdersFoot{
+	margin-left: 18px;
+	background-color: rgb(23,157,244);
+}
+li.singleOrdersFoot{
+	color: white;
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+li.bookName,li.bookPress,li.bookPrice,li.bookAmount,li.bookISBN{
+	float: left;
+	padding-top: 2px;
+	padding-bottom : 2px;
+}
+li.sequence{
+	width: 10%;
+}
+li.ordersNumber,li.bookName{
+	width: 20%;
+}
+li.ordersUser,li.bookPrice{
+	width: 20%;
+}
+li.ordersTime,li.bookPress{
+	width: 20%;
+}
+li.dealOrders,li.bookAmount{
+	width: 20%;
+}
+a.aboutOrders:VISITED ,a.aboutOrders:LINK,a.more:VISITED ,a.more:LINK{
+	text-decoration: none;
+	color:black;
+}
+a.aboutOrders:HOVER ,a.aboutOrders:ACTIVE,a.more:HOVER ,a.more:ACTIVE{
+	text-decoration: underline;
+	color:black;
+}
+a.aboutBook:VISITED ,a.aboutBook:LINK{
+	text-decoration: none;
+	color:blue;
+}
+a.aboutBook:HOVER ,a.aboutBook:ACTIVE{
+	text-decoration: underline;
+	color:blue;
+}
+a.bookName:VISITED ,a.bookName:LINK{
+	text-decoration: none;
+	color:maroon;
+}
+a.bookName:HOVER ,a.bookName:ACTIVE{
+	text-decoration: underline;
+	color:maroon;
+}
+a.more{
+	margin-left: 550px;
+	width: 50px;
+}
+ul.manageBookUl,ul.singleBookUl,ul.allBookUl{
+	width: 650px;
+	margin-left: 20px;
+}
+li.manageBookHead,li.singleBookName,li.allBookHead{
+	width: 700px;
+	background-color: rgb(23,157,244);
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 5px;
+	color:white;
+	font-weight: bold;
+}
+li.manageBookPicture,li.singleBookPicture,li.allBookPicture{
+	width: 140px;
+	float: left;
+	margin-top: 10px;
+}
+li.manageBookInfor,li.allBookInfor{
+	width: 210px;
+	float: left;
+	margin-top: 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+li.manageBookPicture img,li.singleBookPicture img,li.allBookPicture img{
+	width: 140px;
+	height: 104px;
+}
+li.singleBookInfor{
+	width: 560px;
+	float: left;
+	margin-top: 10px;
+	text-align: left;
+	padding-left: 10px;	
+}
