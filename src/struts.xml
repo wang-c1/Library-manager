@@ -99,6 +99,24 @@
 			<interceptor-ref name="authority"/>
 		</action>
 		
+		<action name="manager_deleteBook" class="BookAction" method="deleteBook">
+			<result name="success">/manage/bookList.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_deleteUser" class="UserAction" method="deleteUser">
+			<result name="success">/manage/userInfo.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
+		<action name="manager_deleteBookType" class="BookTypeAction" method="deleteBookType">
+			<result name="success">/manage/manager_manageBookType.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		
 		<action name="manager_offshelvesBook" class="BookAction" method="offselvesBook">
 			<result type="stream" name="ajax_succ">
 				<param name="contentType">text/html</param>

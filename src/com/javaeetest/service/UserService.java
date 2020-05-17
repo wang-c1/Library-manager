@@ -28,5 +28,7 @@ public interface UserService {
 	 */
 	public User getUserInforByUserId(int userId);
 	
+	public void deleteUser(int userId);
+	
 
 }

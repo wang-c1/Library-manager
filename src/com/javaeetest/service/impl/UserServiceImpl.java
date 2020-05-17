@@ -56,4 +56,17 @@ public class UserServiceImpl implements UserService {
 		return userDao.findUserByUserId(userId);
 	}
 	
+	@Override
+	public void deleteUser(int userId) {
+		try {
+			int a = userDao.deleteUser(userId);
+			if(a == 1) {
+				System.out.println("用户删除成功!");
+			}
+		} catch (Exception e) {
+			System.out.println("用户未删除成功");
+			e.printStackTrace();
+		}
+	}
+	
 }

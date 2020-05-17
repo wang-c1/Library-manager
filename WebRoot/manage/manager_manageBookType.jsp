@@ -172,6 +172,16 @@ table {
 			return false;
 		}
 	}
+	function check(typeId){
+		alert("确认删除:" + typeId + "？");
+		var args = {
+				"typeId" : typeId
+			};
+		$.post('manager_deleteBookType', args, function(data) {
+			
+			alert("删除类别成功!");
+		});
+	}
 </script>
 
 </head>
@@ -204,7 +214,8 @@ table {
 										<thead>
 											<tr>
 												<th width="30%">类型id</th>
-												<th width="70%">类型名称</th>
+												<th width="50%">类型名称</th>
+												<th width="20%">操作</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -212,6 +223,9 @@ table {
 												<tr>
 													<td><s:property value="typeId" /></td>
 													<td><s:property value="typeName " /></td>
+													<td>
+									                <input type="button" style="width: 40px" value="删除" onclick="check('<s:property value="typeId"/>');">
+								                    </td>
 												</tr>
 											</s:iterator>
 										</tbody>

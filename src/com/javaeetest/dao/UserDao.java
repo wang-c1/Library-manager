@@ -35,5 +35,7 @@ public interface UserDao extends BaseDao<User>{
 	 */
 	public User findUserByUserId(int userId);
 	
+	public int deleteUser(int userId);
+	
 
 }

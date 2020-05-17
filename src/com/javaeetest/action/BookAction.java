@@ -136,18 +136,23 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		/* String uploadPath = realPath.replaceAll("\\javaeetest", ""); */
 		/* System.out.println("uploadPath:"+uploadPath); */
 		System.out.println(ServletActionContext.getRequest().getContextPath());
-		String targetDirectory = s.toString();
+		//String targetDirectory = s.toString();
+		String targetDirectory = "D:\\软件下载\\eclipse\\workplace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Library-user\\upload";
+		String targetDirectory1 = "D:\\软件下载\\eclipse\\workplace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Library-manager\\upload";
 		targetFileName = generateFileName(fileName);
+		System.out.println(targetDirectory);
 		setDir(targetDirectory + "\\" + targetFileName);
 		File target = new File(targetDirectory, targetFileName);
+		File target1 = new File(targetDirectory1, targetFileName);
 		try {
 			FileUtils.copyFile(doc, target);
+			FileUtils.copyFile(doc, target1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		System.out.println("realPath:" + realPath);
-
+        System.out.println(targetFileName);
 		model.setBookPicture(targetFileName);
 		BookType type = bookTypeService.getBookTypeByTypeName(request
 				.getParameter("typeId"));
@@ -214,6 +219,20 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 			e.printStackTrace();
 		}
 		return "ajax_succ";
+	}
+	/**
+	 * 删除图书信息
+	 * 
+	 * @return
+	 */
+	public String deleteBook() {
+		//System.out.println("进入更改图书函数action");
+		//System.out.println("bookId:" + model.getBookId());
+		HttpServletRequest request = ServletActionContext.getRequest();
+		//int increment = Integer.parseInt(request.getParameter("increment"));
+		//bookService.deleteBarginBook(model.getBookId());
+		bookService.deleteBook(model.getBookId());
+		return SUCCESS;
 	}
 
 	/**

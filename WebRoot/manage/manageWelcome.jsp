@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-  	<title>冰菓书店</title>
+  	<title>铭文书店</title>
   </head>
   
 <body bgcolor="white">
@@ -19,7 +19,7 @@
 					<font style="color: green;font-size: 24px;"><s:property value="#session.managerLoginName"/></font>
 				</div>
 				<div style="margin-top: 100px;">
-					冰菓书店
+					铭文书店
 					<hr style="width: 200px;"/>
 					一切为您着想&nbsp;&nbsp;&nbsp;&nbsp;为您着想一切
 				</div>

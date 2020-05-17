@@ -2,6 +2,10 @@ package com.javaeetest.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.javaeetest.common.dao.impl.BaseDaoImpl;
 import com.javaeetest.dao.BookTypeDao;
 import com.javaeetest.entity.BookType;
@@ -36,5 +40,27 @@ public class BookTypeDaoImpl extends BaseDaoImpl<BookType> implements BookTypeDa
 	@Override
 	public void saveBookType(BookType bookType) {
 		save(bookType);
+	}
+	
+	@Override
+	public int deleteBookType(int typeId) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		int ret = 0;
+		try {
+			String hql = "delete BookType where typeId = "
+					+ typeId;
+			tx = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			ret = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println("BookTypeDao中删除类别的状态出现异常");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ret;
 	}
 }

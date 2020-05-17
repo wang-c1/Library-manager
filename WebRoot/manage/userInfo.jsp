@@ -9,6 +9,18 @@
 <script src="bootstrap/jquery-1.11.3.min.js"></script>
 <script src="bootstrap/bootstrap.min.js"></script>
 <title>所有用户信息</title>
+<script type="text/javascript">
+function check(userId){
+	alert("确认删除用户号为:" + userId + "的用户？");
+	var args = {
+			"userId" : userId
+		};
+	$.post('manager_deleteUser', args, function(data) {
+		
+		alert("删除用户成功!");
+	});
+}
+</script>
 
 </head>
 
@@ -38,8 +50,9 @@
 								<th width="10%">昵称</th>
 								<th width="10%">性别</th>
 								<th width="10%">电话</th>
-								<th width="10%">备注</th>
-								<th width="10%"></th>
+								<!--<th width="10%">备注</th>-->
+								<th width="10%">详细信息</th>
+								<th width="10%">操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,8 +64,11 @@
 								<td><s:property value="#user.userNickName"/></td>
 								<td><s:property value="#user.userSex"/></td>
 								<td><s:property value="#user.userPhone"/></td>
-								<td><s:property value="#user.userRemark"/></td>
+								<!--<td><s:property value="#user.userRemark"/></td>-->
 								<td><a href="singleUser?userId=<s:property value="#user.userId"/>">详细信息</a></td>
+								<td>
+									<input type="button" style="width: 40px" value="删除" onclick="check('<s:property value="#user.userId"/>');">
+								</td>
 							</tr>
 						</s:iterator>
 						</tbody>

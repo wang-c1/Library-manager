@@ -77,5 +77,27 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 		User user = (User) query.list().get(0);
 		return user;
 	}
+	
+	@Override
+	public int deleteUser(int userId) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		int ret = 0;
+		try {
+			String hql = "delete User where userId = "
+					+ userId;
+			tx = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			ret = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println("UserDao中删除用户的状态出现异常");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ret;
+	}
 
 }
