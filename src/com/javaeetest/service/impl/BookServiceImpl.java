@@ -38,6 +38,32 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
+	public void deleteBook(int bookId) {
+		try {
+			int a = bookDao.deleteBook(bookId);
+			if(a == 1) {
+				System.out.println("图书删除成功!");
+			}
+		} catch (Exception e) {
+			System.out.println("图书未删除成功");
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void deleteBarginBook(int bookId) {
+		try {
+			int a = bookDao.deleteBarginBook(bookId);
+			if(a == 1) {
+				System.out.println("图书删除成功!");
+			}
+		} catch (Exception e) {
+			System.out.println("图书未删除成功");
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
 	public PageBean<Book> getPageBean(int pageSize, int page,
 			String searchCriteria) {
 		PageBean<Book> pageBean = new PageBean<Book>();

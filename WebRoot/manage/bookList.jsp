@@ -33,6 +33,17 @@
 			}
 		});
 	}
+	
+	function check1(bookId){
+		alert(bookId);
+		var args = {
+				"bookId" : bookId
+			};
+		$.post('manager_deleteBook', args, function(data) {
+			
+			alert("删除图书成功!");
+		});
+	}
 </script>
 
 </head>
@@ -82,10 +93,16 @@
 								<td><s:property value="#book.bookPrice"/></td>
 								<td><a href="manager_singleBook?bookId=<s:property value="#book.bookId"/>">详细信息</a></td>
 								<s:if test="#book.bookStatus==0">
-									<td><font color="red">已下架</font></td>
+									<td>
+									<font color="red">已下架</font>
+									<input type="button" style="width: 40px" value="删除" onclick="check1('<s:property value="#book.bookId"/>');">
+									</td>
 								</s:if>
 								<s:else>
-									<td><input type="button" style="width: 40px" value="下架" onclick="check('<s:property value="#book.bookId"/>');"></td>
+									<td>
+									<input type="button" style="width: 40px" value="下架" onclick="check('<s:property value="#book.bookId"/>');">
+									<input type="button" style="width: 40px" value="删除" onclick="check1('<s:property value="#book.bookId"/>');">
+									</td>
 								</s:else>
 							</tr>
 						</s:iterator>

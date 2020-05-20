@@ -23,6 +23,50 @@ public class BookDaoImpl extends BaseDaoImpl<Book> implements BookDao {
 		Session session = sessionFactory.openSession();
 		save(book);
 	}
+	
+	@Override
+	public int deleteBook(int bookId) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		int ret = 0;
+		try {
+			String hql = "delete Book where bookId = "
+					+ bookId;
+			tx = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			ret = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println("BookDao中删除图书的状态出现异常");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ret;
+	}
+	
+	@Override
+	public int deleteBarginBook(int bookId) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		int ret = 0;
+		try {
+			String hql = "delete Bargin where bookId = "
+					+ bookId;
+			tx = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			ret = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println("BookDao中删除图书的状态出现异常");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ret;
+	}
 
 	@Override
 	public List<Book> queryByPage(int offset, int pageSize,

@@ -32,4 +32,6 @@ public interface BookTypeService {
 	 * @return(true:保存成功，false:保存失败)
 	 */
 	public boolean addBookType(BookType bookType);
+	
+	public void deleteBookType(int typeId);
 }

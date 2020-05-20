@@ -79,5 +79,18 @@ public class BookTypeServiceImpl implements BookTypeService {
 		}
 		return true;
 	}
+	
+	@Override
+	public void deleteBookType(int typeId) {
+		try {
+			int a = bookTypeDao.deleteBookType(typeId);
+			if(a == 1) {
+				System.out.println("用户删除成功!");
+			}
+		} catch (Exception e) {
+			System.out.println("用户未删除成功");
+			e.printStackTrace();
+		}
+	}
 
 }

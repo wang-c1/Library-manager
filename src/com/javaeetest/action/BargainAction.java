@@ -56,8 +56,8 @@ public class BargainAction extends ActionSupport implements
 				.getAllBargainingBook();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(bargainingList.size());
-		System.out.println(bargainingList.get(0).getBookName());
-		System.out.println(bargainingList.get(1).getBookName());
+		//System.out.println(bargainingList.get(0).getBookName());
+		//System.out.println(bargainingList.get(1).getBookName());
 		request.setAttribute("bargainingList", bargainingList);
 		return SUCCESS;
 	}

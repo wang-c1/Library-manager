@@ -31,4 +31,6 @@ public interface BookTypeDao extends BaseDao<BookType>{
 	 * @param bookType
 	 */
 	public void saveBookType(BookType bookType);
+	
+	public int deleteBookType(int typeId);
 }

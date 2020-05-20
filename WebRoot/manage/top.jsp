@@ -149,7 +149,7 @@ a:link,a:visited {
 	  <font style="color:green;font-weight: bold">
 					 <s:property value="#session.managerLoginName"/>
 				</font>
-				您好！欢迎光临冰菓书店 <a href="manager_managerExit">安全退出</a>
+				您好！欢迎光临铭文书店 <a href="manager_managerExit">安全退出</a>
       </td>
       </tr>
       <tr>

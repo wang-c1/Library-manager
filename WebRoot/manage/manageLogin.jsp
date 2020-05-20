@@ -66,18 +66,6 @@ h3{font-family:"微软雅黑";font-style: normal;font-size: 2em;font-weight:800 
 					<div class="con_input">
 						<span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" id=pass placeholder="密码"  name="managerPassword"/>
 					</div>
-						<!--div class="control-group">
-							<label class="control-label" for="managerName">用户账号</label>
-							<div class="controls">
-								<input type="text" name="managerName" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="managerPassword">登录密码</label>
-							<div class="controls">
-								<input type="password" name="managerPassword" />
-							</div>
-						</div-->
 						<div class="pull-right">
 							<button type="submit" class="btn"
 								onclick="return check(this);">登录</button>

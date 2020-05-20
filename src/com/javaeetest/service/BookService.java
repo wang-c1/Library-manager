@@ -16,6 +16,9 @@ public interface BookService {
 	 */
 	public void addBook(Book book);
 	
+	public void deleteBook(int bookId);
+	
+	public void deleteBarginBook(int bookId);
 	/**
 	 * 得到分页所需的数据
 	 * @param pageSize

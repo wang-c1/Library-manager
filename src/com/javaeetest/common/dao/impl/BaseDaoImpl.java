@@ -61,6 +61,7 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 		session.close();
 		return status;
 	}
+	
 
 	@Override
 	public int update(T entity) {

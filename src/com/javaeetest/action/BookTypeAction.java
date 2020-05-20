@@ -68,6 +68,14 @@ public class BookTypeAction extends ActionSupport implements ModelDriven<BookTyp
 		return "ajax_succ";
 	}
 	
+	public String deleteBookType() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		int typeId = Integer.parseInt(request.getParameter("typeId"));
+		System.out.println("typeId:" + typeId);
+		bookTypeService.deleteBookType(typeId);
+		return SUCCESS;
+	}
+	
 	/**
 	 * 验证类型名是否存在的action执行的方法
 	 * @return

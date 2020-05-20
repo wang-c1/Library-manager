@@ -14,6 +14,9 @@ public interface BookDao extends BaseDao<Book>{
 	 */
 	public void addBook(Book book);
 	
+	public int deleteBook(int bookId);
+	public int deleteBarginBook(int bookId);
+	
 	/**
 	 * 按页查询图书的信息
 	 * @param hql
