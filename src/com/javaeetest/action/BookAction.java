@@ -135,6 +135,7 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		s.append(sub).append(upload);
 		/* String uploadPath = realPath.replaceAll("\\javaeetest", ""); */
 		/* System.out.println("uploadPath:"+uploadPath); */
+		/*  */
 		System.out.println(ServletActionContext.getRequest().getContextPath());
 		//String targetDirectory = s.toString();
 		String targetDirectory = "D:\\软件下载\\eclipse\\workplace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Library-user\\upload";

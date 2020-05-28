@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>失败</title>
+<title>失败！！！</title>
 </head>
 <body>
-	<center><font color="red" size="20">管理员登陆失败</font></center>
+	<center><font color="red" size="20">管理员登陆失败！！！</font></center>
 </body>
 </html>
